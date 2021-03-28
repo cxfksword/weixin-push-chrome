@@ -26,11 +26,7 @@
   },
   "permissions": [
     "tabs",
-    "activeTab",
     "contextMenus",
-    "cookies",
-    "notifications",
-    "idle",
     "storage",
     "http://*/*",
     "https://*/*"
