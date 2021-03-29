@@ -6,7 +6,7 @@ var app = new Vue({
         corpid: "",
         corpsecret: "",
         agentid: "",
-        touser: "@all",
+        touser: "",
       },
     };
   },
@@ -23,7 +23,7 @@ var app = new Vue({
         $this.form.corpid = items.corpid;
         $this.form.corpsecret = items.corpsecret;
         $this.form.agentid = items.agentid;
-        $this.form.touser = items.touser;
+        $this.form.touser = items.touser || "@all";
       }
     );
   },
