@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "企业微信推送(weixin-push)",
   "description": "push message to qiye weixin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "icons": {
     "16": "icon_16.png",
     "48": "icon_48.png",
@@ -28,8 +28,7 @@
     "tabs",
     "contextMenus",
     "storage",
-    "http://*/*",
-    "https://*/*"
+    "https://qyapi.weixin.qq.com/"
   ],
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "short_name": "推送企业微信",

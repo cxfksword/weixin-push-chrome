@@ -20,18 +20,18 @@
           <div slot="header" class="clearfix">
             <span>设置</span>
           </div>
-          <el-form label-position="top" label-width="80px">
+          <el-form :model="form" label-position="top" label-width="80px">
             <el-form-item label="企业ID (CorpId)">
-              <el-input v-model="corpid"></el-input>
+              <el-input v-model="form.corpid"></el-input>
             </el-form-item>
             <el-form-item label="密钥 (Corpsecret)">
-              <el-input v-model="corpsecret"></el-input>
+              <el-input v-model="form.corpsecret"></el-input>
             </el-form-item>
             <el-form-item label="应用ID (AgentId)">
-              <el-input v-model="agentid"></el-input>
+              <el-input v-model="form.agentid"></el-input>
             </el-form-item>
             <el-form-item label="指定接收消息的成员 (touser)">
-              <el-input v-model="touser"></el-input>
+              <el-input v-model="form.touser" placeholder="@all"></el-input>
             </el-form-item>
             <el-form-item>
               <el-button type="primary" @click="saveOptions()" icon="el-icon-edit"> 保存 </el-button>

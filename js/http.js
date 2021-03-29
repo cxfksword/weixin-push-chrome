@@ -40,7 +40,6 @@ weixin.postToApi = function (url, object, done) {
 };
 
 weixin.postMessage = function (title, message, done) {
-  var $this = this;
   weixin.getAccessToken(function (access_token, err) {
     if (access_token) {
       chrome.storage.sync.get(
@@ -61,8 +60,7 @@ weixin.postMessage = function (title, message, done) {
             items.touser === null ||
             items.touser === ""
           ) {
-            console.error("corpid/corpsecret/agentid/touser参数未配置正确，请到设置页检查配置.");
-            done(null, new Error("corpid/corpsecret/agentid/touser参数未配置正确，请到设置页检查配置."));
+            done(null, new Error("corpid/corpsecret/agentid/touser参数未配置正确，请到选项页检查配置."));
             return;
           } else {
             var data = {
@@ -80,8 +78,7 @@ weixin.postMessage = function (title, message, done) {
         }
       );
     } else {
-        console.error("access token获取失败.");
-        done(null, new Error("access token获取失败."));
+        done(null, err);
     }
   });
 };
@@ -115,8 +112,7 @@ weixin.getAccessToken = function (done) {
               }
             );
           } else {
-            console.error("access token获取失败.");
-            done(null, new Error("access token获取失败."));
+            done(null, new Error(result.errmsg || "access token获取失败."));
           }
         });
       } else {
@@ -136,7 +132,7 @@ weixin.postAccessTokenApi = function (done) {
     },
     function (items) {
       if (items.corpid === null || items.corpid === "" || items.corpsecret === null || items.corpsecret === "") {
-        $this.$message("No corpid / corpsecret configured. Please set one in Options.", 4000);
+        done({errcode: -1, errmsg: "corpid / corpsecret未配置正确，请到选项页检查配置."});
       } else {
         var url =
           "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=" +

@@ -17,9 +17,9 @@ weixin.buildMenu = function () {
         title: "推送企业微信 » 当前页面链接",
         contexts: ["page"],
         onclick: function (info, tab) {
-            weixin.getCurrentTabUrl(info, tab, weixin.postMessage, function (result) {
-                if (result && result.errcode !== 0) {
-                    console.error(result)
+            weixin.getCurrentTabUrl(info, tab, weixin.postMessage, function (result, err) {
+                if (err) {
+                    weixin.error(err)
                 }
                 weixin.log('Done!');
             });
@@ -31,9 +31,9 @@ weixin.buildMenu = function () {
         contexts: ["selection"],
         onclick: function (text) {
             var message = text.selectionText;
-            weixin.postMessage(message, null, function (result) {
-                if (result && result.errcode !== 0) {
-                    console.error(result)
+            weixin.postMessage(message, null, function (result, err) {
+                if (err) {
+                    weixin.error(err)
                 }
                 weixin.log('Done!');
             });
@@ -45,9 +45,9 @@ weixin.buildMenu = function () {
         contexts: ["image"],
         onclick: function (image) {
             var message = image.srcUrl;
-            weixin.postMessage( message, null, function (result) {
-                if (result && result.errcode !== 0) {
-                    console.error(result)
+            weixin.postMessage( message, null, function (result, err) {
+                if (err) {
+                    weixin.error(err)
                 }
                 weixin.log('Done!');
             });
@@ -65,9 +65,9 @@ weixin.buildMenu = function () {
                 title = message;
                 message = null;
             }
-            weixin.postMessage(title,  message, function (result) {
-                if (result && result.errcode !== 0) {
-                    console.error(result)
+            weixin.postMessage(title,  message, function (result, err) {
+                if (err) {
+                    weixin.error(err)
                 }
                 weixin.log('Done!');
             });

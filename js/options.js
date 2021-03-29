@@ -2,10 +2,12 @@ var app = new Vue({
   el: "#app",
   data: () => {
     return {
-      corpid: "",
-      corpsecret: "",
-      agentid: "",
-      touser: "@all",
+      form: {
+        corpid: "",
+        corpsecret: "",
+        agentid: "",
+        touser: "@all",
+      },
     };
   },
   created: function () {
@@ -18,10 +20,10 @@ var app = new Vue({
         touser: null,
       },
       function (items) {
-        $this.corpid = items.corpid;
-        $this.corpsecret = items.corpsecret;
-        $this.agentid = items.agentid;
-        $this.touser = items.touser;
+        $this.form.corpid = items.corpid;
+        $this.form.corpsecret = items.corpsecret;
+        $this.form.agentid = items.agentid;
+        $this.form.touser = items.touser;
       }
     );
   },
@@ -30,10 +32,10 @@ var app = new Vue({
       var $this = this;
       chrome.storage.sync.set(
         {
-          corpid: $this.corpid,
-          corpsecret: $this.corpsecret,
-          agentid: $this.agentid,
-          touser: $this.touser,
+          corpid: $this.form.corpid,
+          corpsecret: $this.form.corpsecret,
+          agentid: $this.form.agentid,
+          touser: $this.form.touser,
         },
         function () {
           $this.$message.success("设置已保存");
